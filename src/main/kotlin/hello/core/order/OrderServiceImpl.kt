@@ -9,7 +9,11 @@ class OrderServiceImpl : OrderService {
     private val discountPolicy = FixDiscountPolicy()
 
 
-    override fun createOrder(memberId: Long, itemName: String, itemPrice: Int): Order {
+    override fun createOrder(
+        memberId: Long,
+        itemName: String,
+        itemPrice: Int,
+    ): Order {
         val member = memberRepo.findById(memberId)!!
         val discountPrice = discountPolicy.discount(
             member = member,
