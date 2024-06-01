@@ -1,5 +1,6 @@
 package hello.core.order
 
+import hello.core.discount.RateDiscountPolicy
 import hello.core.member.Grade
 import hello.core.member.Member
 import hello.core.member.MemberServiceImpl
@@ -8,8 +9,8 @@ import org.junit.jupiter.api.Test
 
 class OrderServiceTest {
 
-    val memberService = MemberServiceImpl()
-    val orderService = OrderServiceImpl()
+    private val memberService = MemberServiceImpl()
+    private val orderService = OrderServiceImpl()
 
     @Test
     fun createOrder() {
@@ -25,6 +26,7 @@ class OrderServiceTest {
             memberId = memberId,
             itemName = "itemA",
             itemPrice = 10000,
+            discountPolicy = RateDiscountPolicy(),
         )
         assertThat(order.discountPrice).isEqualTo(1000)
     }

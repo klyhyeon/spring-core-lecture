@@ -1,5 +1,6 @@
 package hello.core
 
+import hello.core.discount.RateDiscountPolicy
 import hello.core.member.Grade
 import hello.core.member.Member
 import hello.core.member.MemberServiceImpl
@@ -21,6 +22,7 @@ fun main() {
         memberId = memberId,
         itemName = "itemA",
         itemPrice = 10000,
+        discountPolicy = RateDiscountPolicy(),
     )
 
     println("order = $order")
