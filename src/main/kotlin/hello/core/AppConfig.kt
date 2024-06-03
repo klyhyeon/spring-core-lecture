@@ -10,10 +10,14 @@ import hello.core.order.OrderServiceImpl
 // 공연기획자
 class AppConfig {
 
-    fun memberService(): MemberService = MemberServiceImpl(MemoryMemberRepository())
+    fun memberService(): MemberService = MemberServiceImpl(memberRepository())
 
     fun orderService(): OrderService = OrderServiceImpl(
-        memberRepo = MemoryMemberRepository(),
-        discountPolicy = FixDiscountPolicy(),
+        memberRepo = memberRepository(),
+        discountPolicy = discountPolicy(),
     )
+
+    private fun memberRepository() = MemoryMemberRepository()
+
+    private fun discountPolicy() = FixDiscountPolicy()
 }
