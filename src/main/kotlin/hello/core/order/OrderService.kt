@@ -8,6 +8,5 @@ interface OrderService {
         memberId: Long,
         itemName: String,
         itemPrice: Int,
-        discountPolicy: DiscountPolicy,
     ): Order
 }

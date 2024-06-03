@@ -1,14 +1,17 @@
 package hello.core
 
+import hello.core.discount.FixDiscountPolicy
 import hello.core.discount.RateDiscountPolicy
 import hello.core.member.Grade
 import hello.core.member.Member
 import hello.core.member.MemberServiceImpl
+import hello.core.member.MemoryMemberRepository
 import hello.core.order.OrderServiceImpl
 
 fun main() {
-    val memberService = MemberServiceImpl()
-    val orderService = OrderServiceImpl()
+    val appConfig = AppConfig()
+    val memberService = appConfig.memberService()
+    val orderService = appConfig.orderService()
 
     val memberId = 1L
     val member = Member(
@@ -22,7 +25,6 @@ fun main() {
         memberId = memberId,
         itemName = "itemA",
         itemPrice = 10000,
-        discountPolicy = RateDiscountPolicy(),
     )
 
     println("order = $order")
